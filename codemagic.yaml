@@ -3,10 +3,14 @@ workflows:
     name: Build Android APK
     environment:
       node: 18
-      android: latest
+      java: 17
     scripts:
-      - npm install
-      - cd android
-      - ./gradlew assembleRelease
+      - name: Install dependencies
+        script: |
+          npm install
+      - name: Build Android APK
+        script: |
+          cd android
+          ./gradlew assembleRelease
     artifacts:
       - android/app/build/outputs/**/*.apk
