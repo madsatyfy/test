@@ -1,0 +1,12 @@
+workflows:
+  react-native:
+    name: Build Android APK
+    environment:
+      node: 18
+      android: latest
+    scripts:
+      - npm install
+      - cd android
+      - ./gradlew assembleRelease
+    artifacts:
+      - android/app/build/outputs/**/*.apk
